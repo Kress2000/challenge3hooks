@@ -45,7 +45,6 @@ export default function FetchData() {
 
             </div>
           }
-          
           <div className="btnBox">
             <p className={Loaded?"": "green"}>Loading: {Loaded?"Loaded":"True"}</p>
             {status===200?<button onClick={()=>setSeePeople(prev=> !prev)} className="viewBtn">
@@ -55,11 +54,7 @@ export default function FetchData() {
             }
             <p className={status!==200?"red error": "error"}>Error: {status!==200?showErr: "{}"}</p>
           </div>
-
-
-
         </div>
-       
      </div>
    )
  }
