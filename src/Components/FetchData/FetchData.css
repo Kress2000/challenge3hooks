@@ -1,0 +1,14 @@
+.fetchData{
+    min-height: 50vh;
+    width: 100vw;
+    background-color: black;margin-top: 5vh;
+    color: bisque;
+}
+.fetchData .title{
+    text-decoration: underline;
+    color: bisque;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}

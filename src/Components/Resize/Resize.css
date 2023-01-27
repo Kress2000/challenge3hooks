@@ -1,0 +1,32 @@
+.resizeBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    margin-top: 2rem;
+}
+.resizeBox >div{
+    display: flex;
+}
+.resizeBox span{
+    font-size: 1.5rem;
+    display: flex;
+    margin-right: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+.resizeBox h1{
+    font-size: 1.5rem;
+    display: flex;
+    font-weight: bolder;
+    justify-content: center;
+    align-items: center;
+}
+.resizeBox .title{
+    align-self: center;
+    text-decoration: underline;
+    color: black;
+    font-weight: bolder;
+    margin-bottom: 1rem;
+}
