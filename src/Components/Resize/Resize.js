@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react'
 import "./Resize.css";
+import useResize from "../Hooks/useResize";
 
 
 export default function Resize() {
-    const [resize, setResize] = useState([window.innerWidth, window.innerHeight])
-    const handleWindowSize =()=>{
-        setResize([window.innerWidth, window.innerHeight]);
-        return resize;
-    }
-    useEffect(()=>{
-        window.addEventListener("resize", handleWindowSize)
-        return () => {
-            window.removeEventListener('resize', handleWindowSize);
-          };
-    }, [])
+   const resize = useResize()
   return (
     <div className='resizeBox'>
         <h1 className='title'>a. Chech Window size</h1>
