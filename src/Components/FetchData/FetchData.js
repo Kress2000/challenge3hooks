@@ -5,7 +5,7 @@ import useFetch from "../Hooks/useFetch";
 
 export default function FetchData() {
   const [seePeople, hidePeople] = useState(false)
-  const response = useFetch(
+  const {people, showErr, status, Loaded } = useFetch(
   axios.get("https://jsonplaceholder.typicode.com/posts")
   )
   return (
@@ -14,7 +14,7 @@ export default function FetchData() {
       <div className="data-got-box">
         {seePeople&&
           <div className="displayBox">
-            {response.people.map((person, i)=>(
+            {people.map((person, i)=>(
               <div className="people" key={person.id}>
                 <button className="number">{i +1}</button>
                 <div>
@@ -30,13 +30,13 @@ export default function FetchData() {
           </div>
         }
         <div className="btnBox">
-          <p className={response.Loaded?"": "green"}>Loading: {response.Loaded?"Loaded":"True"}</p>
-          {response.status===200?<button onClick={()=>hidePeople(prev=> !prev)} className="viewBtn">
+          <p className={Loaded?"": "green"}>Loading: {Loaded?"Loaded":"True"}</p>
+          {status===200?<button onClick={()=>hidePeople(prev=> !prev)} className="viewBtn">
           {seePeople?"Hide People":"View People"}
             </button> : <button>Data: {"{}"} </button>
 
           }
-          <p className={response.status!==200?"red error": "error"}>Error: {response.status!==200?response.showErr: "{}"}</p>
+          <p className={status!==200?"red error": "error"}>Error: {status!==200?showErr: "{}"}</p>
         </div>
       </div>
     </div>

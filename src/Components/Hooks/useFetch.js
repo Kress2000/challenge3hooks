@@ -1,16 +1,10 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 
 export default function useFetch(request) {
 const [people, setPeople]=useState([]);
 const [showErr, setShowErr] = useState("");
 const [status, setStatus] = useState(0);
 const [Loaded, setLoaded]= useState(false);
-const response ={
-    people,
-    showErr,
-    status,
-    Loaded
-}
   useEffect(()=>{
     request.then(promiseRes=> {
     setStatus(promiseRes.status)
@@ -23,5 +17,5 @@ const response ={
       }
     );
   }, []);
-  return response;
+  return {people, showErr, status, Loaded };
 }
