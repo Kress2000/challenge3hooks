@@ -1,21 +1,21 @@
+import axios from 'axios';
 import {useEffect, useState} from 'react'
 
 export default function useFetch(request) {
-const [people, setPeople]=useState([]);
-const [showErr, setShowErr] = useState("");
-const [status, setStatus] = useState(0);
+const [data, setData]=useState([]);
+const [error, showError] = useState("");
 const [Loaded, setLoaded]= useState(false);
   useEffect(()=>{
-    request.then(promiseRes=> {
-    setStatus(promiseRes.status)
-    setPeople(promiseRes.data);
+    axios.get(request)
+    .then(promiseRes=> {
+    setData(promiseRes);
     setLoaded(true)
     })
-    .catch(err=>{
-      setShowErr(err.message)
+    .catch(error=>{
+      showError(error.message)
       setLoaded(true)
       }
     );
   }, []);
-  return {people, showErr, status, Loaded };
+  return {data, error, Loaded };
 }

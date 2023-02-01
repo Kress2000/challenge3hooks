@@ -2,9 +2,10 @@ import { useEffect, useState } from 'react';
 
 
 export default function useResize() {
-    const [resize, setResize] = useState([window.innerWidth, window.innerHeight])
+    const [resize, setResize] = useState({width: window.innerWidth, height: window.innerHeight})
+    const {width, height}= resize;
     const handleWindowSize =()=>{
-        setResize([window.innerWidth, window.innerHeight]);
+        setResize({width: window.innerWidth, height: window.innerHeight});
         return resize;
     }
     useEffect(()=>{
@@ -14,5 +15,5 @@ export default function useResize() {
           };
     }, [])
 
-  return resize;
+  return {width, height};
 }

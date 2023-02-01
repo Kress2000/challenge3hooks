@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import axios from "axios";
 import './FetchData.css';
 import useFetch from "../Hooks/useFetch";
 
 export default function FetchData() {
-  const [seePeople, hidePeople] = useState(false)
-  const {people, showErr, status, Loaded } = useFetch(
-  axios.get("https://jsonplaceholder.typicode.com/posts")
-  )
+  const [seeData, hideData] = useState(false)
+  const {data, error, Loading } = useFetch("https://jsonplaceholder.typicode.com/posts");
   return (
     <div className="fetchData">
       <h1 className="title">b. Fetch data From API</h1>
       <div className="data-got-box">
-        {seePeople&&
+        {seeData&&
           <div className="displayBox">
-            {people.map((person, i)=>(
+            {data.data.map((person, i)=>(
               <div className="people" key={person.id}>
                 <button className="number">{i +1}</button>
                 <div>
@@ -30,13 +27,12 @@ export default function FetchData() {
           </div>
         }
         <div className="btnBox">
-          <p className={Loaded?"": "green"}>Loading: {Loaded?"Loaded":"True"}</p>
-          {status===200?<button onClick={()=>hidePeople(prev=> !prev)} className="viewBtn">
-          {seePeople?"Hide People":"View People"}
+          <p className={Loading?"": "green"}>Loading: {Loading?"Loaded":"True"}</p>
+          {data.status===200?<button onClick={()=>hideData(prev=> !prev)} className="viewBtn">
+          {seeData?"Hide People":"View People"}
             </button> : <button>Data: {"{}"} </button>
-
           }
-          <p className={status!==200?"red error": "error"}>Error: {status!==200?showErr: "{}"}</p>
+          <p className={data.status!==200?"red error": "error"}>Error: {data.status!==200?error: "{}"}</p>
         </div>
       </div>
     </div>
